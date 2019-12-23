@@ -225,6 +225,7 @@ type frameAppender struct {
 }
 
 func (fa *frameAppender) Add(frame frames.Frame) error {
+	fmt.Printf("Add %v\n", frame)
 	if fa.closed {
 		return fmt.Errorf("stream closed")
 	}
