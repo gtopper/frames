@@ -252,6 +252,7 @@ func (fa *frameAppender) Add(frame frames.Frame) error {
 }
 
 func (fa *frameAppender) WaitForComplete(timeout time.Duration) error {
+	fmt.Println("WaitForComplete")
 	if fa.closed {
 		return fmt.Errorf("stream closed")
 	}
