@@ -31,7 +31,7 @@ func (kvSuite *KvTestSuite) TestSaveModeErrorIfExistsTableExists() {
 	if err := appender.Add(frame); err != nil {
 		kvSuite.T().Fatal(err)
 	}
-	err = appender.WaitForComplete(time.Second)
+	err = appender.WaitForComplete(10 * time.Second)
 	kvSuite.NoError(err, "error while saving")
 	// Save a frame to the same path
 	wreq = &frames.WriteRequest{
@@ -47,7 +47,7 @@ func (kvSuite *KvTestSuite) TestSaveModeErrorIfExistsTableExists() {
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "error while saving")
 
-	err = appender.WaitForComplete(time.Second)
+	err = appender.WaitForComplete(10 * time.Second)
 	if err == nil {
 		kvSuite.T().Fatal("expected an error but finished successfully")
 	}
@@ -71,7 +71,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteTableExists() {
 
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "failed to write frame")
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -92,7 +92,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteTableExists() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -128,7 +128,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteTableDoesntExists() {
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -165,7 +165,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemNewRow() {
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -186,7 +186,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemNewRow() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -224,7 +224,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemNewAttribute() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -246,7 +246,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemNewAttribute() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -285,7 +285,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemSameAttributeDifferentValues()
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -306,7 +306,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemSameAttributeDifferentValues()
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -344,7 +344,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemChangeColumnType() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -365,7 +365,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemChangeColumnType() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -389,7 +389,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemChangeIndexName() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -410,7 +410,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemChangeIndexName() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -434,7 +434,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemUpdateExpressionNewAttributes(
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -455,7 +455,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemUpdateExpressionNewAttributes(
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -513,7 +513,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemUpdateExpressionChangeAttribut
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -534,7 +534,7 @@ func (kvSuite *KvTestSuite) TestSaveModeUpdateItemUpdateExpressionChangeAttribut
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -587,7 +587,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyNewRow() {
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -608,7 +608,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyNewRow() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -646,7 +646,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyNewAttribute() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -668,7 +668,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyNewAttribute() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -722,7 +722,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlySameAttributeDifferent
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -742,7 +742,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlySameAttributeDifferent
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -780,7 +780,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyChangeColumnType() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -801,7 +801,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyChangeColumnType() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -825,7 +825,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyChangeIndexName() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -846,7 +846,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyChangeIndexName() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -870,7 +870,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyUpdateExpressionNewAtt
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -891,7 +891,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyUpdateExpressionNewAtt
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -946,7 +946,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyUpdateExpressionChange
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -967,7 +967,7 @@ func (kvSuite *KvTestSuite) TestSaveModeCreateNewItemsOnlyUpdateExpressionChange
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1006,7 +1006,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemNewRow() {
 	err = appender.Add(frame)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1027,7 +1027,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemNewRow() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1065,7 +1065,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemNewAttribute() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1087,7 +1087,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemNewAttribute() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1141,7 +1141,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemSameAttributeDifferentValue
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1161,7 +1161,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemSameAttributeDifferentValue
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1199,7 +1199,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemChangeColumnType() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1220,7 +1220,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemChangeColumnType() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -1244,7 +1244,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemChangeIndexName() {
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1265,7 +1265,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemChangeIndexName() {
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err == nil {
+	if err := appender.WaitForComplete(10 * time.Second); err == nil {
 		kvSuite.T().Fatalf("expected to fail, but completed succesfully")
 	}
 }
@@ -1289,7 +1289,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemUpdateExpressionNewAttribut
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1310,7 +1310,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemUpdateExpressionNewAttribut
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1366,7 +1366,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemUpdateExpressionChangeAttri
 		kvSuite.T().Fatal(err)
 	}
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
@@ -1387,7 +1387,7 @@ func (kvSuite *KvTestSuite) TestSaveModeOverwriteItemUpdateExpressionChangeAttri
 	err = appender.Add(frame2)
 	kvSuite.NoError(err, "failed to write frame")
 
-	if err := appender.WaitForComplete(time.Second); err != nil {
+	if err := appender.WaitForComplete(10 * time.Second); err != nil {
 		kvSuite.T().Fatal(err)
 	}
 
