@@ -116,6 +116,7 @@ func (kv *Backend) Write(request *frames.WriteRequest) (frames.FrameAppender, er
 
 // Add adds a frame
 func (a *Appender) Add(frame frames.Frame) error {
+	a.logger.Debug("Add", "a", a, "frame", frame)
 	names := frame.Names()
 	if len(names) == 0 {
 		return fmt.Errorf("empty frame")

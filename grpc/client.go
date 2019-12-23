@@ -98,6 +98,7 @@ func (c *Client) Read(request *pb.ReadRequest) (frames.FrameIterator, error) {
 }
 
 func (c *Client) Write(request *frames.WriteRequest) (frames.FrameAppender, error) {
+	fmt.Printf("Write %v\n", request)
 	if request.Session == nil {
 		request.Session = c.session
 	}
