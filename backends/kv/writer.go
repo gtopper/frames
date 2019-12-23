@@ -427,8 +427,8 @@ func (a *Appender) respWaitLoop(timeout time.Duration) {
 		select {
 
 		case resp := <-a.responseChan:
-			a.logger.DebugWith("write response", "response", resp)
 			responses++
+			a.logger.DebugWith("write response", "response", resp.Output, "requests", requests, "responses", responses)
 			active = true
 			timer.Reset(timeout)
 
@@ -452,6 +452,7 @@ func (a *Appender) respWaitLoop(timeout time.Duration) {
 			}
 
 		case requests = <-a.commChan:
+			a.logger.DebugWith("Got commChan", "requests", requests, "responses", responses)
 			if requests <= responses {
 				a.doneChan <- true
 				return
@@ -459,7 +460,7 @@ func (a *Appender) respWaitLoop(timeout time.Duration) {
 
 		case <-timer.C:
 			if !active {
-				a.logger.ErrorWith("Resp loop timed out! ", "requests", requests, "response", responses)
+				a.logger.ErrorWith("Resp loop timed out! ", "requests", requests, "responses", responses)
 				a.asyncErr = fmt.Errorf("Resp loop timed out!")
 				a.doneChan <- true
 				return
