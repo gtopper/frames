@@ -21,4 +21,7 @@ require (
 	google.golang.org/grpc v1.17.0
 )
 
-replace github.com/xwb1989/sqlparser => github.com/v3io/sqlparser v0.0.0-20190306105200-4d7273501871
+replace (
+	github.com/valyala/fasthttp => github.com/gtopper/fasthttp v0.0.0-00000000000000-7a4001c9cba9e6b34cc810e9c4d8c2384887997b
+	github.com/xwb1989/sqlparser => github.com/v3io/sqlparser v0.0.0-20190306105200-4d7273501871
+)
