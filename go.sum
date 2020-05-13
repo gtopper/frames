@@ -34,9 +34,11 @@ github.com/golang/mock v1.1.1/go.mod h1:oTYuIxOrZwtPieC+H1uAHpcLFnEyAGVDL/k47Jfb
 github.com/golang/protobuf v1.2.0 h1:P3YflyNX/ehuJFLhxviNdFxQPkGK5cDcApsge1SqnvM=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/gtopper/fasthttp v0.0.0-00000000000000-064bd135ce606a0a82c6e30da034cfbfac7eba07/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
+github.com/gtopper/fasthttp v0.0.0-00000000000000-46fda6326ae5dd3522bb5dca40785015f308a287/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
 github.com/gtopper/fasthttp v0.0.0-00000000000000-65f3246c17b88e666f3f5d5af485f6842a8210b4/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
 github.com/gtopper/fasthttp v0.0.0-00000000000000-7a4001c9cba9e6b34cc810e9c4d8c2384887997b h1:h5P6bPMqAFxeZUgIzbnJTYaXAE9Q6k0dIyvSHZ1Vr48=
 github.com/gtopper/fasthttp v0.0.0-00000000000000-7a4001c9cba9e6b34cc810e9c4d8c2384887997b/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
+github.com/gtopper/fasthttp v0.0.0-00000000000000-a8ea24788d09ae78761ea09eecd0d49dee932342/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
 github.com/gtopper/fasthttp v0.0.0-00000000000000-a91ce576cc5dcbc2811560a76adb6281b00b770d/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
 github.com/gtopper/fasthttp v0.0.0-20190306105200-7a4001c9cba9e6b34cc810e9c4d8c2384887997b/go.mod h1:4vX61m6KN+xDduDNwXrhIAVZaZaZiQ1luJk8LWSxF3s=
 github.com/imakhlin/v3io-tsdb v0.0.0-20200216212042-62ad830a966d/go.mod h1:Oqvn2Y3EDvz4eX5LW+YfHhv4ho30E2pg+4vebjqEJYE=
