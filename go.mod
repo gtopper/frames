@@ -22,6 +22,6 @@ require (
 )
 
 replace (
-	github.com/valyala/fasthttp => github.com/gtopper/fasthttp v0.0.0-00000000000000-064bd135ce606a0a82c6e30da034cfbfac7eba07
+	github.com/valyala/fasthttp => github.com/gtopper/fasthttp v0.0.0-00000000000000-46fda6326ae5dd3522bb5dca40785015f308a287
 	github.com/xwb1989/sqlparser => github.com/v3io/sqlparser v0.0.0-20190306105200-4d7273501871
 )
