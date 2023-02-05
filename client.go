@@ -77,5 +77,12 @@ func SessionFromEnv() (*pb.Session, error) {
 		return nil, errors.Wrapf(err, "can't read JSON from %s environment", envKey)
 	}
 
+	if session.Url == "" {
+		session.Url = os.Getenv("V3IO_API")
+	}
+	if session.Token == "" {
+		session.Token = os.Getenv("V3IO_ACCESS_KEY")
+	}
+
 	return session, nil
 }
