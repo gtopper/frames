@@ -53,6 +53,25 @@ func SessionFromEnv() (*pb.Session, error) {
 		return session, nil
 	}
 
+	// Support var1=val1,var2=val2,... format
+	data = strings.TrimSpace(data)
+	if !strings.HasPrefix(data, "{") {
+		parts := strings.Split(data, ",")
+		newData := map[string]string{}
+		for _, part := range parts {
+			pair := strings.SplitN(part, "=", 2)
+			if len(pair) != 2 {
+				return nil, errors.Errorf("%s was not recognized as either a JSON dictionary or comma-separated value pairs", envKey)
+			}
+			newData[pair[0]] = pair[1]
+		}
+		bytes, err := json.Marshal(newData)
+		data = string(bytes)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	dec := json.NewDecoder(strings.NewReader(data))
 	if err := dec.Decode(session); err != nil {
 		return nil, errors.Wrapf(err, "can't read JSON from %s environment", envKey)
