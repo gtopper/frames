@@ -47,6 +47,9 @@ jobs:
         with:
           ref: refs/pull/${{ github.event.number }}/merge
 
+      - name: Lint
+        run: make lint
+
       - run: echo "new_variable=$(echo "{\"url\":\"$V3IO_API\",\"container\":\"bigdata\",\"user\":\"admin\",\"token\":\"$V3IO_ACCESS_KEY\"}" | envsubst)" >> $GITHUB_OUTPUT
         id: resolve_v3io_env
         env:
