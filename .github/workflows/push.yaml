@@ -58,9 +58,8 @@ jobs:
       - name: Lint
         run: make lint
 
-      - name: Test short
-        run:
-          run: export V3IO_SESSION={{ "{" }}"url":"$V3IO_API","container":"bigdata","user":"admin","token":"$V3IO_ACCESS_KEY"{{ "}" }}; make test-go
+      - name: Run Go tests
+        run: export V3IO_SESSION={{ "{" }}"url":"$V3IO_API","container":"bigdata","user":"admin","token":"$V3IO_ACCESS_KEY"{{ "}" }}; make test-go
         env:
           V3IO_API: ${{ secrets.V3IO_API }}
           V3IO_ACCESS_KEY: ${{ secrets.V3IO_ACCESS_KEY }}
