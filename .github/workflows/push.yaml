@@ -61,7 +61,7 @@ jobs:
       - name: Test short
         run: make test-go
         env:
-          V3IO_SESSION: '{"url":"'${{ secrets.V3IO_API }}'","container":"bigdata","user":"admin","token":"'${{ secrets.V3IO_ACCESS_KEY }}'"}'
+          V3IO_SESSION: '{"url":"''","container":"bigdata","user":"admin","token":"''"}'
 
   release:
     name: Release
