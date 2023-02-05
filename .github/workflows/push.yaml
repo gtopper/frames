@@ -60,10 +60,11 @@ jobs:
 
       - name: Test short
         run:
-          export V3IO_SESSION={{ "{" }}"url":"$V3IO_API","container":"bigdata","user":"admin","token":"$V3IO_ACCESS_KEY"{{ "}" }}; make test-go
+          make test-go
         env:
           V3IO_API: ${{ secrets.V3IO_API }}
           V3IO_ACCESS_KEY: ${{ secrets.V3IO_ACCESS_KEY }}
+          V3IO_SESSION: echo $V3IO_API $V3IO_ACCESS_KEY
 
   release:
     name: Release
