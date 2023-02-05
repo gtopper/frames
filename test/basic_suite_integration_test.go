@@ -180,7 +180,7 @@ func sessionInfo(t testing.TB) *frames.Session {
 		parts := strings.Split(data, ",")
 		newData := map[string]string{}
 		for _, part := range parts {
-			pair := strings.SplitN(part, "=", 1)
+			pair := strings.SplitN(part, "=", 2)
 			if len(pair) != 2 {
 				return nil
 			}
