@@ -201,6 +201,13 @@ func sessionInfo(t testing.TB) *frames.Session {
 		s.Session.Url = s.Address
 	}
 
+	if s.Session.Url == "" {
+		s.Session.Url = os.Getenv("V3IO_API")
+	}
+	if s.Session.Token == "" {
+		s.Session.Token = os.Getenv("V3IO_ACCESS_KEY")
+	}
+
 	return &s.Session
 }
 
