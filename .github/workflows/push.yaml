@@ -58,10 +58,14 @@ jobs:
       - name: Lint
         run: make lint
 
-      - name: Run Go tests
-        run: make test-go
+      - run: echo "new_variable=$(echo "{\"url\":\"$V3IO_API\",\"container\":\"bigdata\",\"user\":\"admin\",\"token\":\"$V3IO_ACCESS_KEY\"}" | envsubst)" >> $GITHUB_OUTPUT
+        id: resolve_v3io_env
         env:
-          V3IO_SESSION: url=${{ secrets.V3IO_API }},container=bigdata,user=admin,token=${{ secrets.V3IO_ACCESS_KEY }}
+          V3IO_API: ${{ secrets.V3IO_API }}
+          V3IO_ACCESS_KEY: ${{ secrets.V3IO_ACCESS_KEY }}
+      - run: make test-go
+        env:
+          V3IO_SESSION: ${{ steps.resolve_v3io_env.outputs.new_variable }}
 
   release:
     name: Release
